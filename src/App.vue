@@ -1,13 +1,9 @@
 <script>
-import Settins from './components/settings.vue'
 export default {
   data() {
     return {
       name: 'App'
     }
-  },
-  components: {
-    Settins
   }
 
 }
@@ -15,7 +11,14 @@ export default {
 </script>
 
 <template>
-  <div>{{name}}</div>
-  <b>initData</b>: {{ TWA.initData }} <br>
-  <Settins></Settins>
+  <div style="width: 100%; height: 100%;background: #008CBA">
+    <b>viewportHeight</b>: {{ TWA.viewportHeight }} <br>
+    <b>viewportStableHeight</b>: {{ TWA.viewportStableHeight }} <br>
+
+    <h3>Data received</h3>
+    <b>initData</b>: {{ TWA.initData }} <br>
+    <b>initDataUnsafe</b>: <pre>{{ TWA.initDataUnsafe }}</pre><br>
+    <b>platform</b>: <pre>{{ TWA.platform }}</pre><br>
+  </div>
+
 </template>
