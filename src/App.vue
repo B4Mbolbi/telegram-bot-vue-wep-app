@@ -36,6 +36,7 @@ export default {
   font-family: 'Poppins', sans-serif;
 }
 .container{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
