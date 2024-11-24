@@ -11,6 +11,9 @@ export default {
 </script>
 
 <template>
+  <div>
+    <img :src="TWA.initDataUnsafe.user.photo_url">
+  </div>
   <div style="width: 100%; height: 100%;background: #008CBA">
     <b>viewportHeight</b>: {{ TWA.viewportHeight }} <br>
     <b>viewportStableHeight</b>: {{ TWA.viewportStableHeight }} <br>
