@@ -1,27 +1,32 @@
+<div>
+<img :src="TWA.initDataUnsafe.user.photo_url">
+</div>
+<div style="width: 100%; height: 100%;background: #008CBA">
+<!-- ... -->
+<button @click="closeAppAndSendData()">Закрыть и отправить данные</button>
+</div>
+
 <script>
 export default {
-  data() {
-    return {
-      name: 'App'
-    }
-  }
-
-}
-
+  methods: {
+    closeAppAndSendData() {
+      // Отправить данные в Telegram бот
+      fetch(`https://api.telegram.org/bot7933334930:AAEJlGJbaLow8rxkNjo2DNthF6YuRRO648A/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TWA.initDataUnsafe.user.id,
+          text: `Данные: ${JSON.stringify(TWA.initDataUnsafe)}`,
+        }),
+      })
+          .then(() => {
+            // Закрыть приложение
+            window.close();
+          })
+          .catch((error) => {
+            console.error('Ошибка отправки данных:', error);
+          });
+    },
+  },
+};
 </script>
-
-<template>
-  <div>
-    <img :src="TWA.initDataUnsafe.user.photo_url">
-  </div>
-  <div style="width: 100%; height: 100%;background: #008CBA">
-    <b>viewportHeight</b>: {{ TWA.viewportHeight }} <br>
-    <b>viewportStableHeight</b>: {{ TWA.viewportStableHeight }} <br>
-
-    <h3>Data received</h3>
-    <b>initData</b>: {{ TWA.initData }} <br>
-    <b>initDataUnsafe</b>: <pre>{{ TWA.initDataUnsafe }}</pre><br>
-    <b>platform</b>: <pre>{{ TWA.platform }}</pre><br>
-  </div>
-
-</template>
