@@ -1,6 +1,6 @@
 <template>
 
-  <Settings />
+  <div>Helloy Word</div>
 
 
 </template>
